@@ -1,0 +1,34 @@
+service: alexa-ghosts
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: dev
+  region: eu-west-1
+  environment:
+#    APP_ID: amzn1.ask.skill.4694b781-95b6-4dad-b5d8-003c9b6dd2a1
+#  iamRoleStatements:
+#    - Effect: "Allow"
+#      Action:
+#        - "dynamodb:DescribeTable"
+#        - "dynamodb:Query"
+#        - "dynamodb:Scan"
+#        - "dynamodb:GetItem"
+#        - "dynamodb:PutItem"
+#        - "dynamodb:UpdateItem"
+#        - "dynamodb:DeleteItem"
+#        - "dynamodb:CreateTable"
+#      Resource: "arn:aws:dynamodb:eu-west-1:*:*"
+functions:
+  hello:
+    handler: index.handler
+    events:
+      - alexaSkill
+package:
+  include:
+    - index.js
+    - node_modules/alexa-sdk/**
+    - node_modules/i18next/**
+    - node_modules/i18next-sprintf-postprocessor/**
+  exclude:
+    - node_modules/**
+    - .*/**
