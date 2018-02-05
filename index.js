@@ -17,9 +17,8 @@ module.exports.handler = (event, context, callback) => {
 const lobbyMode = {
   'LaunchRequest': function() {
     var speechOutput = ``;
-      speechOutput = `Welcome to fizzbuzz.
-      `;
-    }
+    speechOutput = `Welcome to fizzbuzz.
+    `;
     var reprompt = `Shall we play?`;
     speechOutput = `${speechOutput} ${reprompt}`;
     var cardTitle = `Welcome to fizzbuzz.`;
