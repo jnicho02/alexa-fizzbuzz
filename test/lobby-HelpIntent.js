@@ -4,7 +4,7 @@ var index = require('../index');
 const context = require('aws-lambda-mock-context');
 const ctx = context();
 
-describe("Testing a session with the LaunchRequest", function() {
+describe("Testing a session with the HelpIntent", function() {
   var speechResponse = null
   var speechError = null
 
@@ -22,11 +22,11 @@ describe("Testing a session with the LaunchRequest", function() {
         "new": true
       },
       "request": {
-        "type": "LaunchRequest",
+        "type": "IntentRequest",
         "requestId": "EdwRequestId.474c15c8-14d2-4a77-a4ce-154291c5",
         "timestamp": "2016-07-05T22:02:01Z",
         "intent": {
-          "name": "LaunchRequest",
+          "name": "AMAZON.HelpIntent",
           "slots": {}
         },
         "locale": "en-GB"
