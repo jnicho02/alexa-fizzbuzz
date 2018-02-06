@@ -122,28 +122,28 @@ const playMode = Alexa.CreateStateHandler("PLAY", {
   },
   'MyIntent': function() {
     var slotValues = getSlotValues(this.event.request.intent.slots);
-    var speechOutput = `Goodbye.`;
+    var speechOutput = ``;
     var yourGuess = slotValues['fb']['resolved'];
     if (yourGuess === undefined) {
       yourGuess = slotValues['guess']['resolved'];
     }
     console.log(`your guess ${yourGuess}`);
     if (yourGuess !== undefined) {
-      speechOutput = `You guessed ${yourGuess}`;
+//      speechOutput = `You said ${yourGuess}`;
       if (yourGuess.toString().toLowerCase() === fb(this.event.session.attributes['number']).toLowerCase()) {
-        speechOutput = `${speechOutput}. Which is correct.`;
+//        speechOutput = `${speechOutput}. Which is correct.`;
       } else {
-        speechOutput = `${speechOutput}. Which is wrong, it should be ${fb(this.event.session.attributes['number'])}.`;
+        speechOutput = `${speechOutput} You said ${yourGuess}. Which is wrong, it should be ${fb(this.event.session.attributes['number'])}.`;
       }
       this.event.session.attributes['number'] = this.event.session.attributes['number'] + 1;
-      speechOutput = `${speechOutput}. ${fb(this.event.session.attributes['number'])}`;
+      speechOutput = `${speechOutput} ${fb(this.event.session.attributes['number'])}`;
       this.event.session.attributes['number'] = this.event.session.attributes['number'] + 1;
     } else {
       speechOutput = `I didn't understand your guess`;
     }
     var reprompt = `What is your guess?`;
-    var cardTitle = `Exit`;
-    var cardContent = speechOutput;
+    var cardTitle = `What is your guess?`;
+    var cardContent = `The next number is ${this.event.session.attributes['number']}.`;
     var imageObj = undefined;
     log('MyIntent', speechOutput, reprompt, cardTitle, cardContent, imageObj);
     this.response.speak(speechOutput)
