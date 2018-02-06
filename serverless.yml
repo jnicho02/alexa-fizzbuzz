@@ -1,11 +1,12 @@
-service: alexa-ghosts
+service: alexa-fizzbuzz
 provider:
   name: aws
   runtime: nodejs6.10
   stage: dev
   region: eu-west-1
   environment:
-#    APP_ID: amzn1.ask.skill.4694b781-95b6-4dad-b5d8-003c9b6dd2a1
+    APP_ID: amzn1.ask.skill.d9eb0616-7adc-4467-9c08-330303b756a4
+#   USE_DYNAMO_DB: true
 #  iamRoleStatements:
 #    - Effect: "Allow"
 #      Action:
