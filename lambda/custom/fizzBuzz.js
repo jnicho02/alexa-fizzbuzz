@@ -1,4 +1,4 @@
-exports.fb = (n) => {
+exports.answer = (n) => {
   if (n == 0) return
   var response = `${n}`
   if (n % 15 == 0) {

@@ -40,6 +40,6 @@ exports.getSlotValues = (filledSlots) => {
       }
     }
   }, this)
-  console.log(`slot values: ${JSON.stringify(slotValues)}`)
+//  console.log(`slot values: ${JSON.stringify(slotValues)}`)
   return slotValues
 }
