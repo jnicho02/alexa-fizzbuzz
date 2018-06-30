@@ -4,8 +4,7 @@ provider:
   runtime: nodejs6.10
   stage: dev
   region: eu-west-1
-  environment:
-    APP_ID: amzn1.ask.skill.d9eb0616-7adc-4467-9c08-330303b756a4
+#  environment:
 #   USE_DYNAMO_DB: true
 #  iamRoleStatements:
 #    - Effect: "Allow"
@@ -21,15 +20,16 @@ provider:
 #      Resource: "arn:aws:dynamodb:eu-west-1:*:*"
 functions:
   hello:
-    handler: index.handler
+    handler: lambda/custom/index.handler
     events:
-      - alexaSkill
+      - alexaSkill: amzn1.ask.skill.d9eb0616-7adc-4467-9c08-330303b756a4
 package:
   include:
-    - index.js
-    - node_modules/alexa-sdk/**
-    - node_modules/i18next/**
-    - node_modules/i18next-sprintf-postprocessor/**
+    - lambda/custom/*.js
+    - lambda/custom/node_modules/ask-sdk-core/**
+    - lambda/custom/node_modules/ask-sdk-model/**
+#    - lambda/custom/node_modules/i18next/**
+#    - lambda/custom/node_modules/i18next-sprintf-postprocessor/**
   exclude:
-    - node_modules/**
+    - lambda/custom/node_modules/**
     - .*/**

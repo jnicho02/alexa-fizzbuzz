@@ -1,0 +1,63 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "fizz buzz",
+      "intents": [{
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "samples": []
+        },
+        {
+          "name": "TakeATurnIntent",
+          "slots": [{
+              "name": "guess",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "fbguess",
+              "type": "fizzOrBuzz"
+            }
+          ],
+          "samples": [
+            "{guess}",
+            "{fbguess}"
+          ]
+        }
+      ],
+      "types": [{
+        "name": "fizzOrBuzz",
+        "values": [{
+            "name": {
+              "value": "fizzbuzz"
+            }
+          },
+          {
+            "name": {
+              "value": "buzz"
+            }
+          },
+          {
+            "name": {
+              "value": "fizz"
+            }
+          }
+        ]
+      }]
+    }
+  }
+}
