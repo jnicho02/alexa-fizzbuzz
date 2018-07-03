@@ -4,7 +4,6 @@ module.exports = {
   },
   handle(handlerInput, error) {
     console.log(`Error handled: ${error}`)
-    console.log(`Error handled: ${error.message}`)
 
     const speechText = `Sorry, I can\'t understand the command. Please say again.`
     const reprompt = speechText
