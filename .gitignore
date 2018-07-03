@@ -59,3 +59,4 @@ typings/
 
 
 .serverless/**
+lambda/custom/test/go.js
