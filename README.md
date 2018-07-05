@@ -28,22 +28,22 @@ Fork this repository to submit pull requests *OR* use it as a template project f
 
 1. Get the latest version of Serverless:
 
-	```bash
-	npm update -g serverless
-	```
+```bash
+npm update -g serverless
+```
 
 2. Install from the repository:
 
-	```bash
-	serverless install -u https://github.com/jnicho02/alexa-fizzbuzz/tree/master -n [your_project_name]
-	```
+```bash
+serverless install -u https://github.com/jnicho02/alexa-fizzbuzz/tree/master -n [your_project_name]
+```
 
 4. Install npm dependencies:
 
-	```bash
-	cd [your_project_name]/lambda/custom
-	npm
-  ```
+```bash
+cd [your_project_name]/lambda/custom
+npm
+```
 
 # Setup the language model
 Alexa language models are set up in their own special web panel. As of 2018, this is being updated constantly so these instructions may have aged.
