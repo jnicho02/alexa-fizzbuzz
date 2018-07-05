@@ -65,3 +65,6 @@ sls deploy
 ```
 
 Use the [AWS Console](https://console.aws.amazon.com/console/home) to see the Lamdba programs created
+
+# Monitor
+See the inputs and outputs via the [Alexa web page](https://alexa.amazon.co.uk/spa/)
