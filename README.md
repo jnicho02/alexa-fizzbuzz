@@ -1,9 +1,8 @@
 # Alexa Fizz Buzz
 
-A simple Amazon Alexa number game. This is a demonstration of using Amazon's  [Alexa Skills Kit SDK for nodejs)](https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs).
+A simple Amazon Alexa number game. This is a demonstration of using Amazon's  [Alexa Skills Kit SDK for nodejs](https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs).
 
 ## Launch
-say,
 ```
 "Alexa, open Fizz Buzz"
 ```
@@ -14,6 +13,8 @@ or
 
 ## Play
 Count upwards from 1 taking turns with Alexa. If a number is divisible by 3 then say, "fizz". If a number is divisible by 5 say, "buzz". And if it is divisible by both 3 and 5 then say, "fizz buzz".
+
+e.g. "1", "2", "fizz", "4", "buzz", etc.
 
 You lose after you get it wrong for the second time.
 
@@ -56,3 +57,11 @@ Alexa language models are set up in their own special web panel. As of 2018, thi
 4. Scroll down and select the 'JSON Editor' in the left-hand menu
 
 5. Drag and drop /models/en-GB.json to the editor's 'drag and drop a .json file' panel
+
+# Deploy from Serverless
+
+```bash
+sls deploy
+```
+
+Use the [AWS Console](https://console.aws.amazon.com/console/home) to see the Lamdba programs created
