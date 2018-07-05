@@ -4,7 +4,7 @@ module.exports = {
   },
   handle(handlerInput) {
     const speechText = `Welcome to fizz buzz. Shall we start?`
-    const reprompt = `Do you know how to play?`
+    const reprompt = `Shall we start?`
     const cardTitle = `Welcome to fizz buzz.`
     const cardText = `This is a number game. Shall we start?`
 
