@@ -3,13 +3,14 @@ const fizzBuzz = require('./fizzBuzz')
 
 module.exports = {
   canHandle(handlerInput) {
-    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes()
-    return sessionAttributes.state === `play`
-      && handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'TakeATurnIntent'
+    const req = handlerInput.requestEnvelope.request
+    const session = handlerInput.attributesManager.getSessionAttributes()
+    return session.state === `play`
+      && req.type === 'IntentRequest'
+      && req.intent.name === 'TakeATurnIntent'
   },
   handle(handlerInput) {
-    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes()
+    const session = handlerInput.attributesManager.getSessionAttributes()
     const slots = handlerInput.requestEnvelope.request.intent.slots
     var speechText = ``
     var reprompt = ``
@@ -27,45 +28,45 @@ module.exports = {
       }
     }
 
-    console.log(`player guessed ${yourGuess} for ${sessionAttributes.number}`)
+    console.log(`player guessed ${yourGuess} for ${session.number}`)
 
     if (yourGuess === undefined) {
       speechText += `I didn't understand your guess. `
     } else {
-      if (yourGuess.toString().toLowerCase() === fizzBuzz.answer(sessionAttributes.number).toLowerCase()) {
+      if (yourGuess.toString().toLowerCase() === fizzBuzz.answer(session.number).toLowerCase()) {
         cardTitle = `Yes. That's right. `
       } else {
-        sessionAttributes.failures++
-        if (sessionAttributes.failures > 1) {
-          sessionAttributes.state = `lose`
-          speechText += `No, ${sessionAttributes.number} should be ${fizzBuzz.answer(sessionAttributes.number)}. `
+        session.failures++
+        if (session.failures > 1) {
+          session.state = `lose`
+          speechText += `No, ${session.number} should be ${fizzBuzz.answer(session.number)}. `
           speechText += `You've made too many mistakes. It's game over. Goodbye. `
           cardTitle = `Game over! `
           cardText = speechText
         } else {
-          speechText += `You said ${yourGuess}. Which is wrong, it should be ${fizzBuzz.answer(sessionAttributes.number)}. `
+          speechText += `You said ${yourGuess}. Which is wrong, it should be ${fizzBuzz.answer(session.number)}. `
           cardTitle = `That isn't right `
           cardText = speechText
         }
       }
-      if (sessionAttributes.state === `play`) {
+      if (session.state === `play`) {
         // Alexa's go
-        sessionAttributes.number++
-        speechText += `${fizzBuzz.answer(sessionAttributes.number)}. `
+        session.number++
+        speechText += `${fizzBuzz.answer(session.number)}. `
         // Prepare for player's go
-        sessionAttributes.number++
-        reprompt = `What is your guess? The next number is ${sessionAttributes.number}. `
+        session.number++
+        reprompt = `What is your guess? The next number is ${session.number}. `
         cardText = reprompt
       }
     }
 
     if (cardText === '') {
       cardTitle = `What is your guess? `
-      speechText += `The next number is ${sessionAttributes.number}. `
-      cardText = `The next number is ${sessionAttributes.number}. `
+      speechText += `The next number is ${session.number}. `
+      cardText = `The next number is ${session.number}. `
     }
 
-    if (sessionAttributes.state === `lose`) {
+    if (session.state === `lose`) {
       // no reprompt means end the game
       return handlerInput.responseBuilder
       .speak(speechText)

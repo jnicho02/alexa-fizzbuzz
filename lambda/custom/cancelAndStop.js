@@ -1,13 +1,14 @@
 module.exports = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && (handlerInput.requestEnvelope.request.intent.name === 'AMAZON.CancelIntent'
-        || handlerInput.requestEnvelope.request.intent.name === 'AMAZON.StopIntent')
+    const req = handlerInput.requestEnvelope.request
+    return req.type === 'IntentRequest'
+      && (req.intent.name === 'AMAZON.CancelIntent'
+        || req.intent.name === 'AMAZON.StopIntent')
   },
   handle(handlerInput) {
-    const speechText = 'Goodbye!'
-    const cardTitle = 'Cancel and stop'
-    const cardText = speechText
+    var speechText = 'Goodbye! '
+    var cardTitle = 'Cancel and stop'
+    var cardText = speechText
 
     return handlerInput.responseBuilder
       .speak(speechText)

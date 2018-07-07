@@ -1,17 +1,18 @@
 module.exports = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent'
+    const req = handlerInput.requestEnvelope.request
+    return req.type === 'IntentRequest'
+      && req.intent.name === 'AMAZON.HelpIntent'
   },
   handle(handlerInput) {
+    const session = handlerInput.attributesManager.getSessionAttributes()
     var speechText = `This is a number game. Shall we play?`
-    const reprompt = `Shall we play?`
-    const cardTitle = `Fizz buzz`
-    const cardText = speechText
+    var reprompt = `Shall we play?`
+    var cardTitle = `Fizz buzz`
+    var cardText = speechText
 
-    const number = handlerInput.attributesManager.getSessionAttributes().number
-    if (number !== undefined){
-      speechText = `It is your turn. What is ${number}?`
+    if (session.number !== undefined){
+      speechText = `It is your turn. What is ${session.number}?`
       reprompt = speechText
       cardText = speechText
     }

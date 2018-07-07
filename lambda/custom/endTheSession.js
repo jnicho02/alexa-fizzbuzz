@@ -1,6 +1,7 @@
 module.exports = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'SessionEndedRequest'
+    const req = handlerInput.requestEnvelope.request
+    return req.type === 'SessionEndedRequest'
   },
   handle(handlerInput) {
     console.log(`Session ended with reason: ${handlerInput.requestEnvelope.request.reason}`);

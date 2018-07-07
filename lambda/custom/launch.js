@@ -1,15 +1,16 @@
 module.exports = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'LaunchRequest'
+    const req = handlerInput.requestEnvelope.request
+    return req.type === 'LaunchRequest'
   },
   handle(handlerInput) {
-    const speechText = `Welcome to fizz buzz. Shall we start?`
-    const reprompt = `Shall we start?`
-    const cardTitle = `Welcome to fizz buzz.`
-    const cardText = `This is a number game. Shall we start?`
+    const session = handlerInput.attributesManager.getSessionAttributes()
+    var speechText = `Welcome to fizz buzz. Shall we start?`
+    var reprompt = `Shall we start?`
+    var cardTitle = `Welcome to fizz buzz.`
+    var cardText = `This is a number game. Shall we start?`
 
-    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes()
-    sessionAttributes.state = `ready`
+    session.state = `ready`
 
     return handlerInput.responseBuilder
       .speak(speechText)
