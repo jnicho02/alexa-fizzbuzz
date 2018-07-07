@@ -8,6 +8,9 @@ module.exports = {
     const cardTitle = `Welcome to fizz buzz.`
     const cardText = `This is a number game. Shall we start?`
 
+    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes()
+    sessionAttributes.state = `ready`
+
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(reprompt)

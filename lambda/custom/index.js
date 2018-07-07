@@ -4,12 +4,8 @@
 /* eslint-disable  no-console */
 
 const Alexa = require('ask-sdk-core')
-const Project = 'alexa-fizzbuzz'
-const AwsRegion = 'eu-west-1'
 
-const skillBuilder = Alexa.SkillBuilders.custom()
-
-exports.handler = skillBuilder
+exports.handler = Alexa.SkillBuilders.custom()
   .addRequestHandlers(
     require('./launch'),
     require('./ready'),

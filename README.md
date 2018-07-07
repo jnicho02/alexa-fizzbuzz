@@ -45,7 +45,7 @@ cd [your_project_name]/lambda/custom
 npm
 ```
 
-# Setup the language model
+### Setup the language model
 Alexa language models are set up in their own special web panel. As of 2018, this is being updated constantly so these instructions may have aged.
 
 1. Open the [Alexa Console](https://developer.amazon.com/alexa/console/ask/)
@@ -58,13 +58,30 @@ Alexa language models are set up in their own special web panel. As of 2018, thi
 
 5. Drag and drop /models/en-GB.json to the editor's 'drag and drop a .json file' panel
 
-# Deploy from Serverless
-
+### Deploy from Serverless
 ```bash
 sls deploy
 ```
 
 Use the [AWS Console](https://console.aws.amazon.com/console/home) to see the Lamdba programs created
 
-# Monitor
+### Monitor
 See the inputs and outputs via the [Alexa web page](https://alexa.amazon.co.uk/spa/)
+
+## Testing
+```bash
+cd lambda/custom
+npm test
+```
+
+## Coding style
+This is a deliberate model answer for Alexa code to demonstrate best practice.
+
+### Module for each request handler
+Each RequestHandler will be called by index.handler without knowledge of any
+other. Keep it neat by putting each into a module and avoid the temptation to
+create global variables.
+
+### Separation of concerns
+Note that the workings of the fizzbuzz game itself are in its own module. This
+lets us to unit test it without invoking any Lamdba, Alexa, etc.

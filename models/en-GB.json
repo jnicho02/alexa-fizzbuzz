@@ -43,7 +43,7 @@
         "name": "fizzOrBuzz",
         "values": [{
             "name": {
-              "value": "fizzbuzz"
+              "value": "fizz buzz"
             }
           },
           {
