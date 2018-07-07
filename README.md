@@ -56,7 +56,8 @@ Alexa language models are set up in their own special web panel. As of 2018, thi
 
 4. Scroll down and select the 'JSON Editor' in the left-hand menu
 
-5. Drag and drop /models/en-GB.json to the editor's 'drag and drop a .json file' panel
+5. Drag and drop /models/en-GB.json (or your language area) to the editor's
+'drag and drop a .json file' panel
 
 ### Deploy from Serverless
 ```bash
@@ -83,5 +84,5 @@ other. Keep it neat by putting each into a module and avoid the temptation to
 create global variables.
 
 ### Separation of concerns
-Note that the workings of the fizzbuzz game itself are in its own module. This
-lets us to unit test it without invoking any Lamdba, Alexa, etc.
+The workings of the fizzbuzz game itself are in its own module.
+This allows us to unit test it without invoking any Lamdba, Alexa, etc.
