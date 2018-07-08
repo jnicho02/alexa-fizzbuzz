@@ -1,7 +1,7 @@
 service: alexa-fizzbuzz
 provider:
   name: aws
-  runtime: nodejs6.10
+  runtime: nodejs8.10
   stage: dev
   region: eu-west-1
 #  environment:
@@ -19,10 +19,10 @@ provider:
 #        - "dynamodb:CreateTable"
 #      Resource: "arn:aws:dynamodb:eu-west-1:*:*"
 functions:
-  hello:
+  fizzbuzz:
     handler: lambda/custom/index.handler
     events:
-      - alexaSkill: amzn1.ask.skill.d9eb0616-7adc-4467-9c08-330303b756a4
+      - alexaSkill #: amzn1.ask.skill.d9eb0616-7adc-4467-9c08-330303b756a4
 package:
   include:
     - lambda/custom/*.js
