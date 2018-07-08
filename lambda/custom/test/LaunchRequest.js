@@ -1,32 +1,25 @@
-var expect = require('chai').expect;
-var index = require('../index');
+var expect = require('chai').expect
+var index = require('../index')
 
-const context = require('aws-lambda-mock-context');
-const ctx = context();
-var lambdaCallback = function(data) {
-  console.log('got data: '+data);
-}
-
-describe("Launching a session", function() {
+describe('Launching a session', function() {
   var speechResponse = null
   var speechError = null
-  const launchJson = require('./LaunchRequest.json')
 
   before(function(done) {
-    index.handler(launchJson, ctx, lambdaCallback)
-
-    ctx.Promise
-        .then(() => {
-            context.log("succeed() called")
-            done()
-        })
-        .catch(err => {
-            context.log("fail() called")
-            done()
-        });
-//    ctx.Promise
-//      .then(resp => { speechResponse = resp; done(); })
-//      .catch(err => { speechError = err; done(); })
+    const launchJson = require('./LaunchRequest.json')
+    var ctx = {}
+    var callback = function callback(error, data) {
+      if (error) {
+        console.log('error: ' + error)
+        speechError = error
+        done()
+      } else {
+//        console.log(`got data: ${JSON.stringify(data)}`)
+        speechResponse = data
+        done()
+      }
+    }
+    index.handler(launchJson, ctx, callback)
   })
 
   describe("The response is structurally correct for Alexa Speech Services", function() {
